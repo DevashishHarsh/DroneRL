@@ -6,7 +6,7 @@ Load a trained SAC model and run it in GridDroneEnv with GUI rendering.
 import time
 from stable_baselines3 import SAC
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
-from drone_sac import GridDroneEnv
+from main import GridDroneEnv
 
 
 def main():
@@ -62,3 +62,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
