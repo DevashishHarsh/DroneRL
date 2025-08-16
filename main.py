@@ -98,7 +98,7 @@ class GridDroneEnv(gym.Env):
         self.curr_stage = 0
         self.stage_success_count = 0
         self.stage_episode_count = 0
-        self.stage_min_episodes = 20  # require at least this many episodes before considering advancement
+        self.stage_min_episodes = 300  # require at least this to calculate success rate
 
         self._connect()
 
@@ -564,18 +564,20 @@ class GridDroneEnv(gym.Env):
             if info.get("goal_reached", False):
                 self.stage_success_count += 1
 
-            # check whether we should advance
-            if self.stage_episode_count >= self.stage_min_episodes:
+            # check whether we should advance at 300 completed episodes
+            if self.stage_episode_count == self.stage_min_episodes:
                 success_rate = float(self.stage_success_count) / float(self.stage_episode_count)
                 if success_rate >= 0.9 and self.curr_stage < 2:
-                    if self.grid_size == 10:
-                        self.curr_stage += 1
-                        info["stage_level"] = self.curr_stage
-                        # reset counters for new stage
-                        self.grid_size = 4
-                    self.grid_size += 1
-                    self.stage_success_count = 0
-                    self.stage_episode_count = 0
+                        if self.grid_size == 10:
+                            self.curr_stage += 1
+                            info["stage_level"] = self.curr_stage
+                            print(f"Current Stage changed to {self.curr_stage}")
+                            # reset counters for new stage
+                            self.grid_size = 4
+                        self.grid_size += 1
+                        print(f"Grid Size Changed to {self.grid_size}")
+                self.stage_success_count = 0
+                self.stage_episode_count = 0
 
         # Add per-component logs for SAC training diagnostics
         info["distance_to_goal"] = dist
@@ -658,6 +660,7 @@ def run():
 if __name__ == "__main__":
 
     run()
+
 
 
 
