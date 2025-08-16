@@ -2,6 +2,8 @@
 
 A compact research/demo codebase that trains a 2D drone agent inside a PyBullet grid environment using Soft Actor-Critic (SAC) from Stable-Baselines3. The project contains a Gymnasium-compatible environment (GridDroneEnv), a headless trainer for scalable training (train.py), and a lightweight PyGame UI (trainer.py) for interactive runs and monitoring.
 
+![Main Menu](assets/mainimg.png)
+
 ## Overview
 
 This repository is intended as a reproducible example and starting point for research or experimentation in continuous-control navigation tasks. The main goals are:
@@ -60,8 +62,10 @@ The UI allows choosing grid size, number of envs, lidar rays, stage (curriculum)
 
 ### Monitor with TensorBoard
 ```
-tensorboard --logdir sac_drone_tb/ 
+tensorboard --logdir sac_drone_tb/
 ```
+![Training Menu](assets/trainimg.png)
+
 > Open http://localhost:6006 to inspect reward, losses, and other logged scalars.
 
 > You can also use the UI to open tensorboard data. Just note down the training number and enter it in the field.
