@@ -1,8 +1,3 @@
-"""
-test_sac.py
-Load a trained SAC model and run it in GridDroneEnv with GUI rendering.
-"""
-
 import time
 from stable_baselines3 import SAC
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
@@ -62,4 +57,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
