@@ -39,8 +39,8 @@ class GridDroneEnv(gym.Env):
         self.prev_pos = None
         self.stuck_counter = 0
         self.min_movement_threshold = 0.05  # meters (small)
-        self.stuck_penalty_scale = 0.1  # scale for stuck penalty
-        self.max_stuck_penalty = 5.0
+        self.stuck_penalty_scale = 0.1 * self.grid_size / 5  # scale for stuck penalty
+        self.max_stuck_penalty = 5.0 * self.grid_size / 5 
         self.draw_lidar = bool(draw_lidar) and self.render
         self.start_distance = 0.0
 
@@ -52,16 +52,18 @@ class GridDroneEnv(gym.Env):
         # === Tuning params ===
         # Scaled down for stability
         self.counter = 0.0
-        self.progress_scale = 15.0        # dense shaping from progress (per step)
-        self.goal_reward = 50.0          # terminal goal reward (bigger to prioritize reaching)
-        self.collision_base_penalty = 25.0  # stronger collision penalty
-        self.obs_close_threshold = 0.6    # lidar threshold for proximity penalty (meters)
-        self.obs_penalty_weight = 0.5     # weight for normalized obstacle proximity penalty
-        self.forward_vel_weight = 0.1    # reward for velocity component toward goal
-        self.speed_penalty = 0.01         # small penalty on raw speed to discourage reckless fast moves
-        self.min_goal_dist_for_rdist = 0.05
-        self.max_rdist = 0.3           # cap on distance shaping term to avoid spikes
-        self.smoothness_penalty_weight = 0.03  # penalty on action change
+        self.progress_scale = 15.0  * self.grid_size / 5       # dense shaping from progress (per step)
+        self.goal_reward = 50.0 * self.grid_size / 5          # terminal goal reward (bigger to prioritize reaching)
+        self.goal_reward_final = 120.0 * self.grid_size / 5    # final goal reward to reach the center
+        self.collision_base_penalty = 25.0 * self.grid_size / 5  # stronger collision penalty
+        self.obs_close_threshold = 0.6 * self.grid_size / 5    # lidar threshold for proximity penalty (meters)
+        self.obs_penalty_weight = 0.5 * self.grid_size / 5     # weight for normalized obstacle proximity penalty
+        self.forward_vel_weight = 0.1 * self.grid_size / 5    # reward for velocity component toward goal
+        self.speed_penalty = 0.01 * self.grid_size / 5         # small penalty on raw speed to discourage reckless fast moves
+        self.min_goal_dist_for_rdist = 0.05 * self.grid_size / 5 
+        self.max_rdist = 0.3 * self.grid_size / 5           # cap on distance shaping term to avoid spikes
+        self.smoothness_penalty_weight = 0.03 * self.grid_size / 5  # penalty on action change
+        self.bound_penalty = 40  * self.grid_size / 5  # penalty to go outside the bounds
 
         # Stuck detection thresholds (seconds -> steps)
         self.stuck_warning_seconds = 2.0
@@ -653,3 +655,4 @@ def run():
 if __name__ == "__main__":
 
     run()
+
