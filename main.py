@@ -49,7 +49,7 @@ class GridDroneEnv(gym.Env):
         self.smoothed_action = np.zeros(2, dtype=np.float32)
         self.prev_action = np.zeros(2, dtype=np.float32)
 
-        # === SAC-friendly reward normalization / tuning params ===
+        # === Tuning params ===
         # Scaled down for stability
         self.counter = 0.0
         self.progress_scale = 15.0        # dense shaping from progress (per step)
@@ -455,7 +455,7 @@ class GridDroneEnv(gym.Env):
         self.elapsed_time += self.timestep
 
         ###################################
-        #Reward calculation (SAC-friendly)
+        #       Reward calculation 
         ###################################
 
         progress = self.prev_goal_dist - dist
@@ -651,4 +651,5 @@ def run():
     env.close()
 
 if __name__ == "__main__":
+
     run()
