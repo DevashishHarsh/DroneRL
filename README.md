@@ -81,6 +81,7 @@ The environment supports three curriculum stages (configurable in the trainer):
 - Hard: Normal obstacles (default sampling weights) — full difficulty.
 
 - Auto: Configured to advance stages automatically when the success rate in the current stage exceeds a threshold (e.g., 90%).
+> If using Auto mode, Choose the grid size as "5" for better results.
 
 ## Training notes
 
