@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<robot name="S_Block">
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0 0.0 1.5" rpy="0 0 0"/>
+    <mass value="9420.000000000002"/>
+    <inertia ixx="7850.0" iyy="7190.6" izz="910.6" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/s_wall.stl" scale="0.0005 0.0007 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/s_wall.stl" scale="0.0005 0.0007 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+</robot>

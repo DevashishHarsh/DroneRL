@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<robot name="slab_v">
+
+<link name="slab_v">
+  <inertial>
+    <origin xyz="-7.275957614183426e-17 0.0 0.05" rpy="0 0 0"/>
+    <mass value="502.4"/>
+    <inertia ixx="27.213333" iyy="27.213333" izz="53.589333" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/slab_v.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/slab_v.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+</robot>
