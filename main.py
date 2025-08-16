@@ -559,7 +559,7 @@ class GridDroneEnv(gym.Env):
         self.prev_action = applied_action.copy()
 
         # Update curriculum stage success counters and possibly advance
-        if done and self.curr_stage == 3:
+        if done and self.stage_level == 3:
             self.stage_episode_count += 1
             if info.get("goal_reached", False):
                 self.stage_success_count += 1
@@ -658,5 +658,6 @@ def run():
 if __name__ == "__main__":
 
     run()
+
 
 
