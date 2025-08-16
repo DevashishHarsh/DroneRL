@@ -98,7 +98,7 @@ class GridDroneEnv(gym.Env):
         self.curr_stage = 0
         self.stage_success_count = 0
         self.stage_episode_count = 0
-        self.stage_min_episodes = 300  # require at least this to calculate success rate
+        self.stage_min_episodes = 50  # require at least this to calculate success rate ( per env )
 
         self._connect()
 
@@ -660,6 +660,7 @@ def run():
 if __name__ == "__main__":
 
     run()
+
 
 
 
