@@ -1,7 +1,3 @@
-# drone_figma_ui_with_tensorboard_fixed.py
-# UI with strict thread stop, proper return-to-menu, black training backdrop,
-# PyBullet main menu restore, and logger: vertical wheel only; horizontal via dragging slider.
-
 import pygame
 from multiprocessing import freeze_support
 import threading
@@ -1006,3 +1002,4 @@ def main():
 if __name__ == "__main__":
     freeze_support()
     main()
+
