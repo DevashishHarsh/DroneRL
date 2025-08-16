@@ -568,9 +568,12 @@ class GridDroneEnv(gym.Env):
             if self.stage_episode_count >= self.stage_min_episodes:
                 success_rate = float(self.stage_success_count) / float(self.stage_episode_count)
                 if success_rate >= 0.9 and self.curr_stage < 2:
-                    self.curr_stage += 1
-                    info["stage_level"] = self.curr_stage
-                    # reset counters for new stage
+                    if self.grid_size == 10:
+                        self.curr_stage += 1
+                        info["stage_level"] = self.curr_stage
+                        # reset counters for new stage
+                        self.grid_size = 4
+                    self.grid_size += 1
                     self.stage_success_count = 0
                     self.stage_episode_count = 0
 
@@ -655,4 +658,5 @@ def run():
 if __name__ == "__main__":
 
     run()
+
 
