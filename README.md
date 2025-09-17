@@ -106,7 +106,8 @@ python evaluate.py
 - trainer.py — UI defaults and layout, or remove thread-kill logic if you prefer process-based control.
 
 ### Side Note
-- Floating blocks just depicts the moving slabs actually. 
+- Floating blocks just depicts the moving slabs actually.
+- Videos of the training and testing have been added.
 - I have also added vertical slabs for the training even though they are not used at the moment. You can change the lidar configuration to actually use them and add them to your project!
 
 ## License
