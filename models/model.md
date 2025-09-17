@@ -1,0 +1,1 @@
+Keeps models and it's vectors normalized.
